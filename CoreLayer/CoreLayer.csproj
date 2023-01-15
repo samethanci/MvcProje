@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{896329E5-1E6E-4E80-9402-EF025523A989}</ProjectGuid>
+    <ProjectGuid>{6140A60A-328B-43D0-B82E-72B9B221F1BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntityLayer</RootNamespace>
-    <AssemblyName>EntityLayer</AssemblyName>
+    <RootNamespace>CoreLayer</RootNamespace>
+    <AssemblyName>CoreLayer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,23 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\About.cs" />
-    <Compile Include="Concrete\Author.cs" />
-    <Compile Include="Concrete\Category.cs" />
-    <Compile Include="Concrete\Contact.cs" />
-    <Compile Include="Concrete\Content.cs" />
-    <Compile Include="Concrete\Heading.cs" />
+    <Compile Include="DataAccess\EntityFramework\EfEntityRepositoryBase.cs" />
+    <Compile Include="DataAccess\IEntityRepository.cs" />
+    <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CoreLayer\CoreLayer.csproj">
-      <Project>{6140A60A-328B-43D0-B82E-72B9B221F1BB}</Project>
-      <Name>CoreLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

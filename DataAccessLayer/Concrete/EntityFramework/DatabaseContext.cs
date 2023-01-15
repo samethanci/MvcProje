@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-    public class Context : DbContext
+    public class DatabaseContext : DbContext
     {
         public DbSet<About> Abouts { get; set; }
         public DbSet<Author> Authors { get; set; }
