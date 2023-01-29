@@ -10,6 +10,7 @@ namespace BusinessLayer.Abstract
 {
     public interface ICategoryService
     {
-        IDataResult<List<Category>> GetAll();
+        //IDataResult<List<Category>> GetAll();
+        List<Category> GetAll();
     }
 }

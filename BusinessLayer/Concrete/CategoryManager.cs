@@ -21,13 +21,19 @@ namespace BusinessLayer.Concrete
         {
             _categoryDal = categoryDal;
         }
-        public IDataResult<List<Category>> GetAll()
+
+        public List<Category> GetAll()
         {
-            if (DateTime.Now.Hour == 20)
-            {
-                return new ErrorDataResult<List<Category>>(Messages.MaintenanceTime);
-            }
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), Messages.CategoryListed);
+            return _categoryDal.GetAll();
         }
+        //public IDataResult<List<Category>> GetAll()
+        //{
+        //    //if (DateTime.Now.Hour == 20)
+        //    //{
+        //    //    return new ErrorDataResult<List<Category>>(Messages.MaintenanceTime);
+        //    //}
+        //    //return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), Messages.CategoryListed);
+        //}
+
     }
 }

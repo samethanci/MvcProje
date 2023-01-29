@@ -22,7 +22,6 @@ namespace MvcProje.Controllers
         {
             var categoryValues = categoryManager.GetAll();
             return View(categoryValues);
-            //return View();
         }
 
         [HttpGet]
