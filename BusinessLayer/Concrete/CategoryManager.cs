@@ -1,4 +1,8 @@
-﻿using CoreLayer.DataAccess.EntityFramework;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Constants;
+using CoreLayer.DataAccess.EntityFramework;
+using CoreLayer.Utilities.Results;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
@@ -9,24 +13,21 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class CategoryManager
+    public class CategoryManager : ICategoryService
     {
-        EfEntityRepositoryBase<Category, DatabaseContext> repositoryBase = new EfEntityRepositoryBase<Category, DatabaseContext>();
+        ICategoryDal _categoryDal;
 
-        public List<Category> GetAll()
+        public CategoryManager(ICategoryDal categoryDal)
         {
-            return repositoryBase.GetAll();
+            _categoryDal = categoryDal;
         }
-        public void Add(Category category)
+        public IDataResult<List<Category>> GetAll()
         {
-            if (category.CategoryName == "" || category.CategoryName.Length <= 3 || category.CategoryName.Length >= 51 || category.CategoryDescription == "")
+            if (DateTime.Now.Hour == 20)
             {
-                // hata mesajı
+                return new ErrorDataResult<List<Category>>(Messages.MaintenanceTime);
             }
-            else
-            {
-                repositoryBase.Add(category);
-            }
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), Messages.CategoryListed);
         }
     }
 }
